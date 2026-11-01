@@ -1,0 +1,52 @@
+# dependencies
+/node_modules/
+/.npm/
+
+# testing
+/coverage/
+
+# next.js
+/.next/
+/out/
+
+# production
+/build/
+/dist/
+
+# misc
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+Thumbs.db
+Desktop.ini
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*~
+*.swp
+*.swo
+
+# debug
+*.log
+npm-debug.log*
+
+# environment files
+.env*
+!.env.example
+!.env.*.example
+
+# vercel
+/.vercel/
+
+# generated caches and hosting output
+/.cache/
+/.turbo/
+/.netlify/
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

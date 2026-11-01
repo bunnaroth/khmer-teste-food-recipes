@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+:root {
+  --ivory: #ffffff;
+  --green: #ffffff;
+  --green-deep: #000;
+  --terracotta: #ffffff;
+  --gold: #ffffff;
+  --charcoal: #ffffff;
+  --muted: #a0a0a0;
+  --line: #e5e5e5;
+  --serif: Arial, Helvetica, sans-serif;
+  --sans: Arial, Helvetica, sans-serif;
+  --khmer: "Noto Sans Khmer", Arial, sans-serif;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-ivory: var(--ivory);
+  --color-green: var(--green);
+  --color-green-deep: var(--green-deep);
+  --color-terracotta: var(--terracotta);
+  --color-gold: var(--gold);
+  --color-charcoal: var(--charcoal);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --font-serif: var(--serif);
+  --font-sans: var(--sans);
+  --font-khmer: var(--khmer);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: #000;
+    color: var(--charcoal);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--sans);
+    font-weight: 700;
+  }
+
+  body,
+  button,
+  input,
+  select {
+    font-family: var(--sans);
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+
+  button,
+  a,
+  input,
+  select {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  ::selection {
+    background: #fff;
+    color: #000;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--sans);
+  font-weight: 700;
+}
+
+main > section {
+  border-top: 1px solid #fff;
+}
+
+.brand-name {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.interactive-button {
+  transition:
+    color 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease,
+    transform 220ms ease;
+}
+
+.interactive-button:hover {
+  transform: translateY(-2px);
+  border-color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  .site-chrome {
+    display: none !important;
+  }
+}
