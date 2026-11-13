@@ -72,8 +72,8 @@ export default async function RecipePage({ params }: RecipePageProps) {
         </div>
         <div className="max-w-[650px] self-center px-[12%] py-[65px] max-[640px]:px-[7%] max-[640px]:pt-[42px] max-[640px]:pb-[55px]">
           <p className="mb-[17px] text-[10px] font-bold tracking-[0.17em] text-muted">{category.name} · A KHMER RECIPE</p>
-          <h1 className="m-0 text-[clamp(48px,6vw,75px)] font-bold leading-[1.04] tracking-[-0.05em] text-green max-[640px]:text-[55px]">{dish.name}</h1>
-          <p className="font-khmer my-[6px] mb-[14px] text-xl text-terracotta" lang="km">{dish.khmerName}</p>
+          <p className="font-khmer mb-[6px] text-xl text-terracotta" lang="km">{dish.khmerName}</p>
+          <h1 className="m-0 mb-[14px] text-[clamp(48px,6vw,75px)] font-bold leading-[1.04] tracking-[-0.05em] text-green max-[640px]:text-[55px]">{dish.name}</h1>
           <p className="m-0 max-w-[470px] text-xs leading-[1.8] text-muted">{dish.summary}</p>
           <div className="mt-[25px] flex gap-[35px] border-t border-line pt-4 max-[640px]:gap-6">
             <div>

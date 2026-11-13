@@ -1,5 +1,5 @@
 import type { Article } from "@/types/dish";
-import ingredientJournalImage from "@/assets/images/kroeung.jpg";
+import ingredientJournalImage from "@/assets/images/kroeung.webp";
 import sharedMealImage from "@/assets/images/shared-meal.jpg";
 
 export const articles: Article[] = [

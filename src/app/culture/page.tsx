@@ -4,7 +4,7 @@ import { articles } from "@/data/articles";
 import { cultureEditorial } from "@/data/editorial";
 
 export const metadata: Metadata = {
-  title: "Culture & Journal",
+  title: "Journal",
   description:
     "Food stories, ingredient notes, and recipes from the Taste of Cambodia journal.",
 };
@@ -36,9 +36,6 @@ export default function CulturePage() {
             <ArticleCard article={article} key={article.id} />
           ))}
         </div>
-        <p className="mt-9 border-t border-line pt-[15px] text-[9px] italic text-muted">
-          {cultureEditorial.sourceNote}
-        </p>
       </section>
     </main>
   );

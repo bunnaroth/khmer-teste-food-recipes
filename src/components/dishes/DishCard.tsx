@@ -30,10 +30,10 @@ export function DishCard({
       <div className="mt-[17px] flex items-center justify-between">
         <div>
           <span className="text-[8px] font-bold uppercase tracking-[0.16em] text-terracotta">{category.name}</span>
+          <p className="font-khmer mt-[5px] mb-0 text-xs text-muted" lang="km">{dish.khmerName}</p>
           <h3 className="mt-[5px] mb-0 font-serif text-2xl font-bold text-green">
             <Link href={`/cuisine/${dish.slug}`}>{dish.name}</Link>
           </h3>
-          <p className="font-khmer mt-[3px] mb-0 text-xs text-muted">{dish.khmerName}</p>
         </div>
       </div>
       <p className="my-3 max-w-[350px] text-[11px] leading-[1.7] text-muted">{dish.summary}</p>

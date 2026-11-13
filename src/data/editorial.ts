@@ -68,6 +68,4 @@ export const cultureEditorial = {
   sectionEyebrow: "NOTES FROM THE TABLE",
   sectionTitleLead: "Read, learn,",
   sectionTitleAccent: "come back hungry.",
-  sourceNote:
-    "Cultural and historical claims are marked for source review before publication.",
 };

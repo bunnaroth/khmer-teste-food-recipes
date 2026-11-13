@@ -28,7 +28,7 @@ export function ArticleCard({ article }: { article: Article }) {
         {article.dek}
       </p>
       <Link
-        className="inline-flex gap-[14px] border-b border-white pb-[7px] text-[8px] font-bold uppercase tracking-[0.12em] text-green"
+        className="inline-flex min-h-10 items-center gap-[14px] border-b border-white pb-[7px] text-[10px] font-bold uppercase tracking-[0.12em] text-green"
         href={`/culture/${article.slug}`}
       >
         Read the story <span className="text-terracotta" aria-hidden="true">↗</span>

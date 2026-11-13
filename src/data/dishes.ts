@@ -1,10 +1,10 @@
 import type { Dish } from "@/types/dish";
 import fishAmokImage from "@/assets/images/fish-amok.jpg";
-import lokLakImage from "@/assets/images/lok-lak.jpg";
-import nomBanhChokImage from "@/assets/images/nom-banh-chok.webp";
+import lokLakImage from "@/assets/images/lok-lak.webp";
+import nomBanhChokImage from "@/assets/images/nom-banh-chok.jpg";
 import baiSachChroukImage from "@/assets/images/bai-sach-chrouk.jpg";
 import numAnsormChekImage from "@/assets/images/num-ansorm-chek.jpg";
-import samlorMchouImage from "@/assets/images/samlor-mchou.jpg";
+import samlorMchouImage from "@/assets/images/samlor-mchou.webp";
 import kuyTeavImage from "@/assets/images/kuy-teav.jpg";
 import samlorKorkoImage from "@/assets/images/samlor-korko.jpg";
 import khmerRedCurryImage from "@/assets/images/khmer-red-curry.jpg";

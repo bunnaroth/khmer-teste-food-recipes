@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const links = [
   { href: "/story", label: "Our story" },
   { href: "/cuisine", label: "Cuisine" },
-  { href: "/culture", label: "Culture & Journal" },
+  { href: "/culture", label: "Journal" },
 ];
 
 export function Navbar() {
@@ -15,26 +16,23 @@ export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="site-chrome sticky top-0 z-30 flex h-[88px] items-center justify-between border-b border-line bg-white px-[6%] text-black max-[600px]:h-[72px] max-[600px]:px-[5%]">
+    <header className="site-chrome z-30 flex h-[88px] items-center justify-between border-b border-line bg-white px-[6%] text-black max-[600px]:h-[72px] max-[600px]:px-[5%]">
       <button
-        className="relative z-[3] inline-flex cursor-pointer items-center gap-3 border-0 bg-transparent py-3 text-black uppercase"
+        className="group relative z-[3] inline-flex min-h-11 min-w-11 cursor-pointer items-center gap-2 rounded-full border border-[#d4a62a]/60 bg-transparent px-3 py-2 text-black uppercase transition-all duration-200 hover:scale-105 hover:shadow-[0_4px_14px_rgba(212,166,42,0.3)] active:scale-95 max-[600px]:px-3"
         type="button"
         aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
         aria-expanded={menuOpen}
         aria-controls="primary-navigation"
         onClick={() => setMenuOpen(!menuOpen)}
       >
-        <span className="flex w-[23px] flex-col gap-[5px]" aria-hidden="true">
-          <i className={`block h-px w-[22px] bg-black ${menuOpen ? "translate-y-[3px] rotate-45" : ""}`} />
-          <i className={`block h-px w-[15px] bg-black ${menuOpen ? "w-[22px] -translate-y-[3px] -rotate-45" : ""}`} />
+        <span className="flex h-7 w-7 flex-col items-center justify-center gap-[4px] rounded-full border border-[#d4a62a] text-[#d4a62a]" aria-hidden="true">
+          <i className={`block h-[2px] w-4 bg-current transition-transform duration-200 ${menuOpen ? "translate-y-[3px] rotate-45" : ""}`} />
+          <i className={`block h-[2px] w-3 bg-current transition-all duration-200 ${menuOpen ? "w-4 -translate-y-[3px] -rotate-45" : ""}`} />
         </span>
-        <span className="text-[9px] font-bold tracking-[0.16em] max-[600px]:hidden">Menu</span>
+        <span className="pr-1 text-[9px] font-bold tracking-[0.16em] max-[600px]:hidden">Menu</span>
       </button>
-      <Link className="absolute left-1/2 z-[3] inline-flex -translate-x-1/2 items-center gap-[9px] text-black max-[600px]:gap-[5px]" href="/" aria-label="Taste of Cambodia home">
-        <span className="brand-name whitespace-nowrap text-xs font-bold tracking-[0.13em] max-[600px]:text-[9px] max-[600px]:tracking-[0.08em]">
-          <small className="mb-0.5 block text-center font-khmer text-[15px] font-medium tracking-[0.02em] text-black max-[600px]:text-[12px]">រសជាតិនៃកម្ពុជា</small>
-          TASTE OF CAMBODIA
-        </span>
+      <Link className="absolute left-1/2 z-[3] inline-flex -translate-x-1/2 items-center rounded-full transition-all duration-200 hover:scale-105 hover:drop-shadow-[0_4px_8px_rgba(212,166,42,0.45)] active:scale-95" href="/" aria-label="Taste of Cambodia home">
+        <Image className="h-[80px] w-[120px] object-contain max-[600px]:h-[70px] max-[600px]:w-[105px]" src="/logo.png" alt="" width={1536} height={1024} priority />
       </Link>
       {menuOpen && (
         <button

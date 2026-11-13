@@ -23,6 +23,7 @@ export function DishBrowser({
 }) {
   const pathname = usePathname();
   const [filters, setFilters] = useState(initialFilters);
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const { query, categoryId, maxMinutes, difficulty, sortOrder } = filters;
 
   useEffect(() => {
@@ -53,32 +54,53 @@ export function DishBrowser({
     });
   }
 
-  const hasActiveFilters =
-    query.trim() !== "" ||
-    categoryId !== "all" ||
-    maxMinutes !== "any" ||
-    difficulty !== "any" ||
-    sortOrder !== "featured";
+  const activeFilterCount = [
+    query.trim() !== "",
+    categoryId !== "all",
+    maxMinutes !== "any",
+    difficulty !== "any",
+    sortOrder !== "featured",
+  ].filter(Boolean).length;
+  const hasActiveFilters = activeFilterCount > 0;
 
   return (
     <div>
       <div className="grid grid-cols-[minmax(210px,1.6fr)_repeat(4,minmax(125px,1fr))] items-end gap-[14px] border-y border-line py-5 max-[950px]:grid-cols-3 max-[640px]:grid-cols-2 max-[640px]:gap-x-3 max-[640px]:gap-y-[15px]">
         <label className="block min-w-0 max-[640px]:col-span-full">
-          <span className="mb-2 block text-[8px] font-bold uppercase tracking-[0.13em] text-green">Search dishes & ingredients</span>
+          <span className="mb-2 block text-[8px] font-bold uppercase tracking-[0.13em] text-green max-[640px]:text-[9px]">Search dishes & ingredients</span>
           <input
-            className="min-h-[34px] w-full appearance-none rounded-none border-0 border-b border-line bg-transparent py-[6px] pr-5 pb-2 text-[11px] text-charcoal placeholder:text-muted"
+            className="min-h-[34px] w-full appearance-none rounded-none border-0 border-b border-line bg-transparent py-[6px] pr-5 pb-2 text-[11px] text-charcoal placeholder:text-muted max-[640px]:min-h-11 max-[640px]:text-xs"
             type="search"
             value={query}
             onChange={(event) =>
               setFilters((current) => ({ ...current, query: event.target.value }))
             }
-            placeholder="Try Fish Amok, kroeung, or Khmer"
+            placeholder="Dish, ingredient, or Khmer name"
           />
         </label>
+        <button
+          className="hidden min-h-11 w-full items-center justify-between border-b border-line py-2 text-[10px] font-bold uppercase tracking-[0.13em] text-white max-[640px]:col-span-full max-[640px]:flex"
+          type="button"
+          aria-expanded={filtersOpen}
+          aria-controls="dish-filter-options"
+          onClick={() => setFiltersOpen((open) => !open)}
+        >
+          <span>
+            Filters
+            {activeFilterCount > 0 && (
+              <span className="ml-2 text-muted">({activeFilterCount} active)</span>
+            )}
+          </span>
+          <span aria-hidden="true">{filtersOpen ? "−" : "+"}</span>
+        </button>
+        <div
+          className={`contents max-[640px]:col-span-full max-[640px]:grid max-[640px]:grid-cols-2 max-[640px]:gap-x-3 max-[640px]:gap-y-4 ${filtersOpen ? "" : "max-[640px]:hidden"}`}
+          id="dish-filter-options"
+        >
         <label className="block min-w-0">
-          <span className="mb-2 block text-[8px] font-bold uppercase tracking-[0.13em] text-green">Category</span>
+          <span className="mb-2 block text-[8px] font-bold uppercase tracking-[0.13em] text-green max-[640px]:text-[9px]">Category</span>
           <select
-            className="min-h-[34px] w-full cursor-pointer rounded-none border-0 border-b border-line bg-black py-[6px] pr-5 pb-2 text-[11px] text-white"
+            className="min-h-[34px] w-full cursor-pointer rounded-none border-0 border-b border-line bg-black py-[6px] pr-5 pb-2 text-[11px] text-white max-[640px]:min-h-11 max-[640px]:text-xs"
             value={categoryId}
             onChange={(event) =>
               setFilters((current) => ({
@@ -96,9 +118,9 @@ export function DishBrowser({
           </select>
         </label>
         <label className="block min-w-0">
-          <span className="mb-2 block text-[8px] font-bold uppercase tracking-[0.13em] text-green">Cooking time</span>
+          <span className="mb-2 block text-[8px] font-bold uppercase tracking-[0.13em] text-green max-[640px]:text-[9px]">Cooking time</span>
           <select
-            className="min-h-[34px] w-full cursor-pointer rounded-none border-0 border-b border-line bg-black py-[6px] pr-5 pb-2 text-[11px] text-white"
+            className="min-h-[34px] w-full cursor-pointer rounded-none border-0 border-b border-line bg-black py-[6px] pr-5 pb-2 text-[11px] text-white max-[640px]:min-h-11 max-[640px]:text-xs"
             value={maxMinutes}
             onChange={(event) =>
               setFilters((current) => ({
@@ -114,9 +136,9 @@ export function DishBrowser({
           </select>
         </label>
         <label className="block min-w-0">
-          <span className="mb-2 block text-[8px] font-bold uppercase tracking-[0.13em] text-green">Difficulty</span>
+          <span className="mb-2 block text-[8px] font-bold uppercase tracking-[0.13em] text-green max-[640px]:text-[9px]">Difficulty</span>
           <select
-            className="min-h-[34px] w-full cursor-pointer rounded-none border-0 border-b border-line bg-black py-[6px] pr-5 pb-2 text-[11px] text-white"
+            className="min-h-[34px] w-full cursor-pointer rounded-none border-0 border-b border-line bg-black py-[6px] pr-5 pb-2 text-[11px] text-white max-[640px]:min-h-11 max-[640px]:text-xs"
             value={difficulty}
             onChange={(event) =>
               setFilters((current) => ({
@@ -132,9 +154,9 @@ export function DishBrowser({
           </select>
         </label>
         <label className="block min-w-0">
-          <span className="mb-2 block text-[8px] font-bold uppercase tracking-[0.13em] text-green">Sort by</span>
+          <span className="mb-2 block text-[8px] font-bold uppercase tracking-[0.13em] text-green max-[640px]:text-[9px]">Sort by</span>
           <select
-            className="min-h-[34px] w-full cursor-pointer rounded-none border-0 border-b border-line bg-black py-[6px] pr-5 pb-2 text-[11px] text-white"
+            className="min-h-[34px] w-full cursor-pointer rounded-none border-0 border-b border-line bg-black py-[6px] pr-5 pb-2 text-[11px] text-white max-[640px]:min-h-11 max-[640px]:text-xs"
             value={sortOrder}
             onChange={(event) => {
               const value = event.target.value;
@@ -148,6 +170,7 @@ export function DishBrowser({
             <option className="bg-black text-white" value="time">Cooking time</option>
           </select>
         </label>
+        </div>
       </div>
       <div className="flex items-center justify-between py-[19px] pb-[25px] text-[10px] uppercase tracking-[0.08em] text-muted" aria-live="polite">
         <span>
@@ -161,15 +184,13 @@ export function DishBrowser({
         )}
       </div>
       {filteredDishes.length > 0 ? (
-        <div className="grid grid-cols-3 gap-x-[25px] gap-y-[42px] max-[640px]:grid-cols-2 max-[640px]:gap-x-4 max-[640px]:gap-y-[34px] max-[430px]:grid-cols-1">
+        <div className="grid grid-cols-3 gap-x-[25px] gap-y-[42px] max-[640px]:grid-cols-1 max-[640px]:gap-y-[38px]">
           {filteredDishes.map((dish) => (
             <DishCard dish={dish} key={dish.slug} />
           ))}
         </div>
       ) : (
         <div className="bg-black px-5 py-[60px] text-center">
-          <span className="text-[28px] text-terracotta" aria-hidden="true">✳</span>
-          <h2 className="my-3 font-serif text-[32px] font-normal text-green">No dishes found just yet.</h2>
           <p className="mx-auto mb-5 text-xs text-muted">Try a different name or clear the filters to see every recipe.</p>
           <button className="cursor-pointer border-0 bg-transparent text-[10px] font-bold uppercase tracking-[0.08em] text-terracotta underline underline-offset-4" type="button" onClick={resetFilters}>
             Show all dishes

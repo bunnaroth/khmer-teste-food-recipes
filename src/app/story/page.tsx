@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { storyEditorial } from "@/data/editorial";
-import kitchenImage from "@/assets/images/khmer-kitchen.png";
+import kitchenImage from "@/assets/images/khmer-kitchen.jpg";
 import sharedMealImage from "@/assets/images/shared-meal.jpg";
 
 export const metadata: Metadata = {
@@ -76,7 +76,7 @@ export default function StoryPage() {
           <br />
           make <em className="not-italic">your own.</em>
         </h2>
-        <Link className="interactive-button inline-flex min-h-[49px] items-center gap-[17px] border border-white px-[21px] text-[10px] font-bold uppercase tracking-[0.1em] text-white transition-colors hover:bg-white hover:text-black" href="/cuisine">
+        <Link className="interactive-button inline-flex min-h-[49px] items-center gap-[17px] border border-white bg-white px-[21px] text-[10px] font-bold uppercase tracking-[0.1em] text-black transition-colors hover:bg-transparent hover:text-white" href="/cuisine">
           Discover Cambodian cuisine <span aria-hidden="true">→</span>
         </Link>
       </section>

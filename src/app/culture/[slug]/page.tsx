@@ -91,12 +91,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             </ul>
           </section>
         )}
-        {article.citationStatus === "needs-review" && (
-          <p className="mt-[30px] border-l-2 border-gold pl-3 text-[10px] italic text-muted">
-            Editorial draft · Cultural and historical claims require source
-            review before publication.
-          </p>
-        )}
       </article>
       {relatedDishes.length > 0 && (
         <section className="mx-auto max-w-[1100px] px-[6%] py-10">
@@ -106,7 +100,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           </div>
           <div className="mt-5 flex flex-wrap gap-3">
             {relatedDishes.map((dish) => (
-              <ArticleDish key={dish.slug} slug={dish.slug} name={dish.name} />
+              <ArticleDish key={dish.slug} slug={dish.slug} name={dish.name} khmerName={dish.khmerName} />
             ))}
           </div>
         </section>
@@ -125,10 +119,19 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   );
 }
 
-function ArticleDish({ slug, name }: { slug: string; name: string }) {
+function ArticleDish({
+  slug,
+  name,
+  khmerName,
+}: {
+  slug: string;
+  name: string;
+  khmerName: string;
+}) {
   return (
-    <Link className="border border-line px-[15px] py-3 text-[10px] text-green" href={`/cuisine/${slug}`}>
-      {name} <span className="ml-3 text-terracotta" aria-hidden="true">↗</span>
+    <Link className="inline-flex flex-col border border-line px-[15px] py-3 text-[10px] text-green" href={`/cuisine/${slug}`}>
+      <span className="font-khmer text-[11px] text-muted" lang="km">{khmerName}</span>
+      <span className="mt-1">{name} <span className="ml-2 text-terracotta" aria-hidden="true">↗</span></span>
     </Link>
   );
 }

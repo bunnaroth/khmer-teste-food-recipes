@@ -10,8 +10,8 @@ import {
 } from "@/data/content";
 import { homepageEditorial } from "@/data/editorial";
 import heroImage from "@/assets/images/editorial-food-table.jpg";
-import marketImage from "@/assets/images/fresh-market-ingredients.jpg";
-import spice from "@/assets/images/ingredient.jpg";
+import marketImage from "@/assets/images/cuisine.jpg";
+import spice from "@/assets/images/ingredient.webp";
 
 export default function Home() {
   const featuredDishes = homepageEditorial.featuredDishSlugs.map((slug) => {
@@ -51,7 +51,7 @@ export default function Home() {
           <p className="mb-8 max-w-[420px] text-[15px] leading-[1.8] text-muted">
             Discover the dishes, ingredients, and stories of Cambodian food.
           </p>
-          <Link className="interactive-button inline-flex min-h-[50px] items-center gap-5 border border-white bg-black px-6 text-[10px] font-bold uppercase tracking-[0.12em] text-white hover:bg-white hover:text-black" href="/cuisine">
+          <Link className="interactive-button inline-flex min-h-[50px] items-center gap-5 border border-white bg-white px-6 text-[10px] font-bold uppercase tracking-[0.12em] text-black hover:bg-transparent hover:text-white" href="/cuisine">
             Explore the cuisine <span aria-hidden="true">→</span>
           </Link>
         </div>
@@ -106,16 +106,16 @@ export default function Home() {
               </h2>
             </div>
           </div>
-          <div className="grid grid-cols-4 gap-[14px] max-[900px]:grid-cols-2 max-[640px]:grid-cols-2 max-[400px]:grid-cols-1">
+          <div className="grid grid-cols-5 gap-3 max-[900px]:grid-cols-3 max-[640px]:grid-cols-2">
             {featuredCategories.map((category) => (
               <Link
-                className="group interactive-button relative flex min-h-[195px] flex-col border border-white bg-white p-[21px] text-black transition-colors duration-300 hover:-translate-y-1 hover:bg-black hover:text-white active:translate-y-0 max-[640px]:min-h-[165px] max-[640px]:p-[17px]"
+                className="group interactive-button inline-flex min-h-14 items-center justify-between gap-5 rounded-full border border-white/40 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-white hover:border-white hover:bg-white hover:text-black active:translate-y-0 max-[400px]:gap-3 max-[400px]:px-4"
                 href={`/cuisine?category=${encodeURIComponent(category.id)}`}
                 key={category.id}
               >
-                <span className="mt-auto font-serif text-[22px] text-black transition-colors duration-300 group-hover:text-white max-[640px]:text-[19px]">{category.name}</span>
-                <span className="absolute right-[21px] bottom-5 text-base text-black transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-white" aria-hidden="true">
-                  ↗
+                <span>{category.name}</span>
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-current text-sm transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
+                  →
                 </span>
               </Link>
             ))}
@@ -169,7 +169,7 @@ export default function Home() {
             <em className="not-italic">{ingredientSpotlight.name.toLowerCase()}.</em>
           </h2>
           <p className="mb-[27px] max-w-[420px] text-xs leading-[1.9] text-white">{ingredientSpotlight.summary}</p>
-          <Link className="interactive-button inline-flex min-h-[50px] items-center gap-5 border border-white px-[22px] text-[10px] font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-white hover:text-black" href="/culture">
+          <Link className="interactive-button inline-flex min-h-[50px] items-center gap-5 border border-white bg-white px-[22px] text-[10px] font-bold uppercase tracking-[0.12em] text-black transition-colors hover:bg-transparent hover:text-white" href="/culture">
             Explore the journal <span aria-hidden="true">→</span>
           </Link>
         </div>
